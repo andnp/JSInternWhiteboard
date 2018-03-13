@@ -1,3 +1,4 @@
 require('./test/map');
-require('./test/find');
+require('./test/flatten');
+require('./test/memoize');
 
