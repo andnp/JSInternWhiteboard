@@ -1,0 +1,28 @@
+<html>
+    <body>
+        <div id='mainDiv'></div>
+        <script>
+                const log = console.log.bind(console);
+                const error = console.error.bind(console);
+
+                const writeToDocument = (err, ...args) => {
+                    const p = document.createElement('p');
+                    p.innerText = args.join(' ');
+                    p.style.backgroundColor = err ? 'pink' : undefined;
+                    p.style.margin = '0px';
+                    document.getElementById('mainDiv').appendChild(p);
+                }
+
+                console.log = (...args) => {
+                    writeToDocument(false, ...args);
+                    log(...args);
+                };
+
+                console.error = (...args) => {
+                    writeToDocument(true, ...args);
+                    error(...args);
+                }
+            </script>
+            <script src="./testall.js"></script>
+    </body>
+</html>
