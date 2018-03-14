@@ -1,4 +1,4 @@
-const memoize = require('../answers/memoize');
+const memoize = require('../questions/memoize');
 const { it, assert, describe } = require('../tester');
 
 describe('memoize', () => {
@@ -16,7 +16,7 @@ describe('memoize', () => {
         resultFunc();
     });
 
-    it('should return a function that computes the result of a function', () => {
+    it('should return a function that computes the result of another function', () => {
 
         let i = 0;
         const increment = (x) => {
@@ -35,7 +35,7 @@ describe('memoize', () => {
         assert.equal(six, 6);
     });
 
-    it('should return a function that computes the result of a function once per input value', () => {
+    it('should return a function that computes the result of another function once per input value', () => {
 
         let i = 0;
         const increment = (x) => {
