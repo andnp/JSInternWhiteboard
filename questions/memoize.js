@@ -1,4 +1,4 @@
 module.exports = function memoize(func) {
 
-    return () => {};
+    return func;
 }

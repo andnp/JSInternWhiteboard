@@ -6,19 +6,18 @@ const testMethods = {
     equal: (thing1, thing2) => thing1 === thing2,
 };
 
-const assert = {};
-Object.keys(testMethods)
-    .forEach(key =>
-        assert[key] = (...args) => {
-            try {
-                throwFalse(testMethods[key](...args));
-            } catch (e) {
-                e.expected = args[1];
-                e.got = args[0];
-                throw e;
-            }
+const assert = Object.keys(testMethods).reduce((collection, key) => {
+    collection[key] = (...args) => {
+        try {
+            throwFalse(testMethods[key](...args));
+        } catch (e) {
+            e.expected = args[1];
+            e.got = args[0];
+            throw e;
         }
-    );
+    }
+    return collection;
+}, {});
 
 const tester = module.exports = {
     assert,
@@ -29,12 +28,12 @@ const tester = module.exports = {
             console.log('PASS:', msg, '\n');
         } catch(e) {
             console.error('FAIL:', msg);
-            console.error('expected:', e.expected, 'got:', e.got, '\n');
+            if (e.expected !== undefined) console.error('expected:', e.expected, 'got:', e.got, '\n');
 
             delete e.expected;
             delete e.got;
 
-            console.error(e);
+            if (e.message !== 'failed test') console.error(e);
         }
     },
     describe: (msg, f) => (console.log('\n' + msg), f()),
