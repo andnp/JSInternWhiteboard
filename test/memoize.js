@@ -5,15 +5,15 @@ describe('memoize', () => {
     it('should call a 0 arg function once', () => {
         let haveCalled = false;
 
-        const func = () => {
+        const func = (x) => {
             if (haveCalled) throw new Error('oops');
             haveCalled = true;
         };
 
         const resultFunc = memoize(func);
 
-        resultFunc();
-        resultFunc();
+        resultFunc(undefined);
+        resultFunc(undefined);
     });
 
     it('should return a function that computes the result of another function', () => {
@@ -46,14 +46,14 @@ describe('memoize', () => {
         const resultFunc = memoize(increment);
 
         const two = resultFunc(2);
-        const stillTwo = resultFunc(2);
         const five = resultFunc(3);
         const stillFive = resultFunc(3);
+        const stillTwo = resultFunc(2);
 
         assert.equal(two, 2);
-        assert.equal(stillTwo, 2);
         assert.equal(five, 5);
         assert.equal(stillFive, 5);
+        assert.equal(stillTwo, 2);
     });
 });
 
