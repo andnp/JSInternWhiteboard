@@ -6,7 +6,7 @@ const add1 = (x) => {
 };
 
 const parseNum = (x) => {
-    return x + '1';
+    return parseInt(x);
 };
 
 describe('map', () => {
