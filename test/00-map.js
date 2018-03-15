@@ -1,4 +1,4 @@
-const map = require('../questions/map');
+const map = require('../questions/00-map');
 const { it, assert, describe } = require('../tester');
 
 const add1 = (x) => {
