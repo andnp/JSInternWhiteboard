@@ -1,4 +1,4 @@
-const flatten = require('../questions/flatten');
+const flatten = require('../questions/01-flatten');
 const { it, assert, describe } = require('../tester');
 
 describe('flatten', () => {

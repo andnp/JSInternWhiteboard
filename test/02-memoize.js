@@ -1,4 +1,4 @@
-const memoize = require('../questions/memoize');
+const memoize = require('../questions/02-memoize');
 const { it, assert, describe } = require('../tester');
 
 describe('memoize', () => {
