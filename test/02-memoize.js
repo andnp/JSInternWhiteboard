@@ -1,5 +1,9 @@
 const memoize = require('../questions/02-memoize');
-const { it, assert, describe } = require('../tester');
+const {
+    it,
+    assert,
+    describe
+} = require('../tester');
 
 describe('memoize', () => {
     it('should call a 0 arg function once', () => {
@@ -73,4 +77,3 @@ describe('memoize', () => {
         assert.equal(stillTwo, 2);
     });
 });
-

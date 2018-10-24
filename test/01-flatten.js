@@ -1,5 +1,9 @@
 const flatten = require('../questions/01-flatten');
-const { it, assert, describe } = require('../tester');
+const {
+    it,
+    assert,
+    describe
+} = require('../tester');
 
 describe('flatten', () => {
     it('should return an empty array when given an empty array', () => {
@@ -34,10 +38,28 @@ describe('flatten', () => {
 
     it('should recursively flatten an n-array to a 1-array', () => {
         const result = flatten([
-            1, [2], [[3]], [[[4]]], [[[[5]]]], [6, 7], [[8, [9]]]
+            1, [2],
+            [
+                [3]
+            ],
+            [
+                [
+                    [4]
+                ]
+            ],
+            [
+                [
+                    [
+                        [5]
+                    ]
+                ]
+            ],
+            [6, 7],
+            [
+                [8, [9]]
+            ]
         ]);
 
         assert.arrayEqual(result, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
     });
 });
-
